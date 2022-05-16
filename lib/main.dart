@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 
-
 void main() {
-  runApp( Assignment());
+  runApp(const Assignment());
 }
 
-class Assignment extends StatelessWidget {
+class Assignment extends StatefulWidget {
+  const Assignment({Key? key}) : super(key: key);
+  @override
+  State<Assignment> createState() => _AssignmentState();
+}
 
-  int questionNumber = 0;
-   var questions = [
-    'what is your name',
-    'what is your age',
-    ' where do you live',
-    'what is your nick name'
-  ];
+class _AssignmentState extends State<Assignment> {
+  int qtn_id = 0;
+  void btn_pressed() {
+    setState(() {
+      qtn_id = qtn_id + 1;
+    });
 
-  void answerQuestion() {
-    print('button is pressed');
+    print("Yes Button is pressed");
   }
 
   @override
   Widget build(BuildContext context) {
+    var questions = [
+      'what is your name',
+      'what is your age',
+      ' where do you live',
+      'what is your nick name'
+    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -29,14 +36,14 @@ class Assignment extends StatelessWidget {
         body: Column(
           children: [
             Text(
-              questions[0],
+              questions[qtn_id],
               style: const TextStyle(
-                  fontSize: 30,
-                 ),
+                fontSize: 30,
+              ),
             ),
             ElevatedButton(
               onPressed: () {
-                answerQuestion();
+                btn_pressed();
               },
               child: const Text(
                 'button 1',
@@ -48,7 +55,7 @@ class Assignment extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                answerQuestion();
+                btn_pressed();
               },
               child: const Text(
                 'button 2',
@@ -60,7 +67,7 @@ class Assignment extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                answerQuestion();
+                btn_pressed();
               },
               child: const Text(
                 'button 3',
@@ -72,7 +79,7 @@ class Assignment extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                answerQuestion();
+                btn_pressed();
               },
               child: const Text(
                 'button 4',
